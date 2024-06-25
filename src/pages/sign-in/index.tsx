@@ -8,6 +8,21 @@ import { Form } from '@/components/ui/form';
 
 import { InputField, CheckboxField } from '@/components/form-fields';
 
+import Container from '../components/Container';
+import Heading from '../components/Heading';
+
+export default function SignIn() {
+    return (
+        <Container>
+            <Heading
+                title="Welcome To Healthy 24 👌"
+                description="Enter your account to use healthy 24 service"
+            />
+            <LoginForm />
+        </Container>
+    );
+}
+
 const formSchema = z.object({
     email: z.string().email(),
     password: z.string().min(6),
@@ -15,29 +30,6 @@ const formSchema = z.object({
 });
 
 type TFormSchema = z.infer<typeof formSchema>;
-
-export default function SignIn() {
-    return (
-        <div className="sm:grid sm:grid-cols-2">
-            <div className="container space-y-6 py-8 sm:space-y-12">
-                <LoginHeader />
-                <LoginForm />
-            </div>
-            <WelcomeBanner />
-        </div>
-    );
-}
-
-function LoginHeader() {
-    return (
-        <div className="space-y-2">
-            <h1 className="text-2xl font-semibold">Welcome To Healthy 24 👌</h1>
-            <p className="text-sm text-muted-foreground">
-                Enter your account to use healthy 24 service
-            </p>
-        </div>
-    );
-}
 
 function LoginForm() {
     const form = useForm<TFormSchema>({
@@ -80,8 +72,8 @@ function LoginForm() {
                             label="Remember Me"
                             name="remember"
                         />
-                        <Link className="text-xs" to="/forgot-password">
-                            Forgot Password
+                        <Link className="text-xs" to="/forget-password">
+                            Forget Password
                         </Link>
                     </div>
                 </div>
@@ -112,34 +104,5 @@ function LoginForm() {
                 </div>
             </form>
         </Form>
-    );
-}
-
-function WelcomeBanner() {
-    return (
-        <div className="hidden bg-[#56ccf2] pt-8 text-center text-white sm:block">
-            <div className="container space-y-6">
-                <h2 className="text-2xl font-medium">
-                    We give the best experience 😉
-                </h2>
-                <p className="text-xl">
-                    Dedicated virtual consulting platform for docotrs and
-                    patients to help them consult across vatious channels
-                </p>
-            </div>
-            <div className="mt-8 overflow-hidden">
-                <img
-                    className="relative right-0 top-0 z-10"
-                    src="/review.png"
-                    alt="What people say about as"
-                />
-                <img
-                    className="relative -right-40 -top-20"
-                    src="/review.png"
-                    alt="What people say about as"
-                />
-            </div>
-            <img className="-mt-80" src="/doctors.png" alt="Our doctors" />
-        </div>
     );
 }
