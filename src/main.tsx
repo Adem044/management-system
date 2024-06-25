@@ -6,6 +6,7 @@ import './index.css';
 
 import App from '@/App';
 import SignIn from '@/pages/sign-in';
+import ForgetPassword from '@/pages/forget-password';
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     {
         path: '/sign-in',
         element: <SignIn />,
+    },
+    {
+        path: '/forget-password',
+        element: <ForgetPassword />,
     },
 ]);
 
