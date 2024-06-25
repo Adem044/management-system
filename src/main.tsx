@@ -14,6 +14,28 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        children: [
+            {
+                path: 'dashboard',
+                element: <div>Dashboard</div>,
+            },
+            {
+                path: 'patients',
+                element: <div>Patients</div>,
+            },
+            {
+                path: 'messages',
+                element: <div>Messages</div>,
+            },
+            {
+                path: 'appointment',
+                element: <div>Appointment</div>,
+            },
+            {
+                path: 'medical-history',
+                element: <div>Medical History</div>,
+            },
+        ],
     },
     {
         path: '/sign-in',
