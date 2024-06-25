@@ -7,6 +7,7 @@ import './index.css';
 import App from '@/App';
 import SignIn from '@/pages/sign-in';
 import ForgetPassword from '@/pages/forget-password';
+import OTPVerification from '@/pages/otp-verification';
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: '/forget-password',
         element: <ForgetPassword />,
+    },
+    {
+        path: '/otp-verification',
+        element: <OTPVerification />,
     },
 ]);
 
