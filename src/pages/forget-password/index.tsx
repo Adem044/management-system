@@ -14,7 +14,7 @@ export default function ForgetPassword() {
     return (
         <Container>
             <Heading
-                title="Forget Password"
+                title="Forget Password 🔒"
                 description="Enter your email to recover your password"
             />
             <ForgetPasswordForm />
