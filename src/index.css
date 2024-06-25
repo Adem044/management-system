@@ -35,6 +35,8 @@
         --ring: 230.53 53.27% 20.98%;
 
         --radius: 0.5rem;
+
+        --font-body: 'Poppins', sans-serif;
     }
 
     .dark {
