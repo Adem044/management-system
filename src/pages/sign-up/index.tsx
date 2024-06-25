@@ -1,49 +1,50 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Link } from 'react-router-dom';
 
 import { Form } from '@/components/ui/form';
-
-import { InputField, CheckboxField } from '@/components/form-fields';
+import { CheckboxField, InputField } from '@/components/form-fields';
 
 import Container from '../components/Container';
 import Heading from '../components/Heading';
 import AuthButtons from '../components/AuthButtons';
 
-export default function SignIn() {
+export default function SignUp() {
     return (
         <Container>
             <Heading
-                title="Welcome To Healthy 24 👌"
-                description="Enter your account to use healthy 24 service"
+                title="Sign up your account 👋"
+                description="Let's enter your data to continue using healthy 24 services"
             />
-            <LoginForm />
+            <SignUpForm />
         </Container>
     );
 }
 
 const formSchema = z.object({
+    name: z.string().min(3).max(255),
     email: z.string().email(),
-    password: z.string().min(6),
-    remember: z.boolean().optional(),
+    password: z.string().min(8),
+    terms: z.boolean(),
 });
 
 type TFormSchema = z.infer<typeof formSchema>;
 
-function LoginForm() {
+function SignUpForm() {
     const form = useForm<TFormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            name: '',
             email: '',
             password: '',
-            remember: false,
+            terms: false,
         },
     });
 
     async function onSubmit(values: TFormSchema) {
         console.log(values);
     }
+
     return (
         <Form {...form}>
             <form
@@ -53,11 +54,17 @@ function LoginForm() {
                 <div className="space-y-4">
                     <InputField
                         control={form.control}
+                        name="name"
+                        label="Name"
+                        placeholder="Enter your name here"
+                        autoFocus
+                    />
+                    <InputField
+                        control={form.control}
                         name="email"
                         type="email"
                         label="Email"
                         placeholder="Enter your email here"
-                        autoFocus
                     />
                     <InputField
                         control={form.control}
@@ -66,18 +73,24 @@ function LoginForm() {
                         label="Password"
                         placeholder="Enter your password here"
                     />
-                    <div className="flex items-center justify-between">
-                        <CheckboxField
-                            control={form.control}
-                            label="Remember Me"
-                            name="remember"
-                        />
-                        <Link className="text-xs" to="/forget-password">
-                            Forget Password
-                        </Link>
-                    </div>
+                    <CheckboxField
+                        control={form.control}
+                        name="terms"
+                        label={
+                            <>
+                                By sign up to healthy 24 you agree all{' '}
+                                <a
+                                    href="#"
+                                    className="font-semibold"
+                                    target="_blank"
+                                >
+                                    terms and conditions
+                                </a>
+                            </>
+                        }
+                    />
                 </div>
-                <AuthButtons page="sign-in" />
+                <AuthButtons page="sign-up" />
             </form>
         </Form>
     );

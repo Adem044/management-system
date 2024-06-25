@@ -13,7 +13,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 export type TCheckboxFieldProps<TFieldValues extends object, TName = string> = {
     control: Control<TFieldValues>;
     name: TName;
-    label: string;
+    label: string | React.ReactNode;
     description?: string;
 };
 export default function CheckboxField<

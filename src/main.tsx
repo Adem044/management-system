@@ -6,6 +6,7 @@ import './index.css';
 
 import App from '@/App';
 import SignIn from '@/pages/sign-in';
+import SignUp from '@/pages/sign-up';
 import ForgetPassword from '@/pages/forget-password';
 import OTPVerification from '@/pages/otp-verification';
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     {
         path: '/sign-in',
         element: <SignIn />,
+    },
+    {
+        path: '/sign-up',
+        element: <SignUp />,
     },
     {
         path: '/forget-password',
