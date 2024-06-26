@@ -10,6 +10,7 @@ import SignUp from '@/pages/sign-up';
 import ForgetPassword from '@/pages/forget-password';
 import OTPVerification from '@/pages/otp-verification';
 import Dashboard from '@/pages/dashboard';
+import Profile from '@/pages/profile';
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: 'dashboard',
                 element: <Dashboard />,
+            },
+            {
+                path: 'profile',
+                element: <Profile />,
             },
             {
                 path: 'patients',
