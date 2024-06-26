@@ -9,6 +9,7 @@ import SignIn from '@/pages/sign-in';
 import SignUp from '@/pages/sign-up';
 import ForgetPassword from '@/pages/forget-password';
 import OTPVerification from '@/pages/otp-verification';
+import Dashboard from '@/pages/dashboard';
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'dashboard',
-                element: <div>Dashboard</div>,
+                element: <Dashboard />,
             },
             {
                 path: 'patients',

@@ -5,11 +5,11 @@ import Sidebar from '@/components/layout/Sidebar';
 
 export default function App() {
     return (
-        <div className="min-h-screen pt-20 sm:p-0">
+        <div className="min-h-screen pb-10 pt-20 sm:p-0">
             <TopBar />
             <div className="flex">
                 <Sidebar />
-                <div className="grow">
+                <div className="grow px-4 sm:py-10">
                     <Outlet />
                 </div>
             </div>

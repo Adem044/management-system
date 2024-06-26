@@ -1,12 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { BellIcon, MenuIcon, SettingsIcon } from 'lucide-react';
 
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-    AvatarProps,
-} from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
     Sheet,
@@ -19,6 +13,7 @@ import {
 import { NAV_LINKS } from '@/constants';
 
 import NavLinks from './NavLinks';
+import UserAvatar from '../UserAvatar';
 
 export default function TopBar() {
     return (
@@ -52,7 +47,7 @@ function TobBarMobile() {
     const location = useLocation();
     const title = NAV_LINKS.find(({ to }) => to === location.pathname)?.label;
     return (
-        <div className="fixed inset-x-0 top-0 flex items-center justify-between bg-white p-4 sm:hidden">
+        <div className="fixed inset-x-0 top-0 z-10 flex items-center justify-between bg-white p-4 sm:hidden">
             <MenuButton />
             <div>
                 <span>{title}</span>
@@ -111,14 +106,5 @@ function MenuButton() {
                 <NavLinks />
             </SheetContent>
         </Sheet>
-    );
-}
-
-function UserAvatar(props: AvatarProps) {
-    return (
-        <Avatar {...props}>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
     );
 }
