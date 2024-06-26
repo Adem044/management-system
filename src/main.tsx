@@ -11,6 +11,7 @@ import ForgetPassword from '@/pages/forget-password';
 import OTPVerification from '@/pages/otp-verification';
 import Dashboard from '@/pages/dashboard';
 import Profile from '@/pages/profile';
+import EditProfile from '@/pages/edit-profile';
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <Profile />,
+            },
+            {
+                path: 'edit-profile',
+                element: <EditProfile />,
             },
             {
                 path: 'patients',
