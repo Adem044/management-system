@@ -1,30 +1,95 @@
-# React + TypeScript + Vite
+# Doctor's Office Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Doctor's Office Management System! This web application allows doctors to manage appointments, patient records, and medical history. 
 
-Currently, two official plugins are available:
+## Table of Contents
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. [Technologies Used](#technologies-used)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Folder Structure](#folder-structure)
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **TypeScript (TS)**: Provides static typing for enhanced code quality and maintainability.
+- **React**: A JavaScript library for building user interfaces.
+- **Shadcn/ui**: A component library for building responsive and modern user interfaces.
+- **react-router-dom**: A routing library for React applications.
+- **react-hook-form**: A library for handling form state and validation.
+- **zod**: A TypeScript-first schema declaration and validation library.
+- **tailwind**: A utility-first CSS framework for styling.
+- **@tanstack/react-table**: A powerful table library for React.
 
--   Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-    // other rules...
-    parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: ['./tsconfig.json', './tsconfig.node.json'],
-        tsconfigRootDir: __dirname,
-    },
-};
+- **Patient Management**: Keep track of patient records, including personal information, medical history, and appointments.
+- **Appointment Scheduling**: Schedule, reschedule, and cancel patient appointments with ease.
+- **Chat**: Keep track of messages with patients.
+- **User Authentication**: Secure login and user management.
+- **Responsive Design**: Accessible on both desktop and mobile devices.
+
+## Installation
+
+To get started with the Doctor's Office Management System, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Adem044/management-system.git
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd management-system
+   ```
+
+3. **Install the dependencies:**
+   ```bash
+   pnpm install
+   ```
+
+4. **Start the development server:**
+   ```bash
+   pnpm dev
+   ```
+
+The application should now be running on `http://localhost:5173`.
+
+## Usage
+
+- **Login**: Use your credentials to log in to the system.
+- **Dashboard**: View a summary of your schedule, patients, and tasks.
+- **Patients**: Manage patient records.
+- **Appointments**: View and manage appointments.
+
+## Folder Structure
+
+```
+doctor-office-management/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── lib/
+│   ├── constants.tsx
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── package.json
+├── components.json
+├── tailwind.config.js
+├── vite.config.js
+├── .prettierrc.json
+├── .commitlintrc.json
+├── .eslintrc.cjs
+├── .index.html
+└── tsconfig.json
 ```
 
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **public/**: Contains public assets like images and the HTML template.
+- **src/**: Contains the source code for the application.
+  - **components/**: Reusable UI components.
+  - **pages/**: Individual page components.
+  - **lib/**: Utility functions and constants.
+- **App.tsx**: The root component of the application.
+- **main.tsx**: The entry point for the React application.
