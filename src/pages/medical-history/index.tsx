@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { EyeOffIcon, TrashIcon } from 'lucide-react';
 import clsx from 'clsx';
@@ -6,6 +7,9 @@ import { Button } from '@/components/ui/button';
 import { DataTable } from '@/components/ui/table/data-table';
 
 import InfoCard from '../components/InfoCard';
+
+import HistoryDetails from './components/HistoryDetails';
+import StatusBadge, { STATUS } from './components/StatusBadge';
 
 export default function MedicalHistory() {
     return (
@@ -21,22 +25,7 @@ export default function MedicalHistory() {
     );
 }
 
-const STATUS = {
-    success: {
-        color: 'bg-green-200 text-green-700',
-        label: 'Success',
-    },
-    pending: {
-        color: 'bg-yellow-200 text-yellow-700',
-        label: 'Pending',
-    },
-    canceled: {
-        color: 'bg-red-200 text-red-700',
-        label: 'Canceled',
-    },
-};
-
-type TPatient = {
+export type TPatient = {
     name: string;
     id: string;
     status: keyof typeof STATUS;
@@ -116,15 +105,6 @@ function MedicalHistoryItem({
     );
 }
 
-function StatusBadge({ status }: { status: keyof typeof STATUS }) {
-    const { color, label } = STATUS[status];
-    return (
-        <div className={`w-max rounded-md p-2 text-xs ${color}`}>
-            <span>{label}</span>
-        </div>
-    );
-}
-
 function DataInfo({
     info,
     data,
@@ -193,5 +173,24 @@ const columns: ColumnDef<TPatient>[] = [
 ];
 
 export function MedicalHistoryTable() {
-    return <DataTable columns={columns} data={patientsData} />;
+    const [open, setOpen] = React.useState(false);
+    const [selectedPatient, setSelectedPatient] =
+        React.useState<TPatient | null>(null);
+    return (
+        <>
+            <DataTable
+                columns={columns}
+                data={patientsData}
+                onRowClick={(data) => {
+                    setOpen(true);
+                    setSelectedPatient(data);
+                }}
+            />
+            <HistoryDetails
+                open={open}
+                setOpen={setOpen}
+                selectedPatient={selectedPatient}
+            />
+        </>
+    );
 }
