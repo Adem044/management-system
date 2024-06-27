@@ -8,18 +8,17 @@ import { Form } from '@/components/ui/form';
 
 import { InputField } from '@/components/form-fields';
 
-import Container from '../components/Container';
 import Heading from '../components/Heading';
 
 export default function ForgetPassword() {
     return (
-        <Container>
+        <>
             <Heading
                 title="Forget Password 🔒"
                 description="Enter your email to recover your password"
             />
             <ForgetPasswordForm />
-        </Container>
+        </>
     );
 }
 

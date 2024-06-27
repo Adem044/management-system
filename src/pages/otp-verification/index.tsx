@@ -8,18 +8,17 @@ import { Form } from '@/components/ui/form';
 
 import { OTPInputField } from '@/components/form-fields';
 
-import Container from '../components/Container';
 import Heading from '../components/Heading';
 
 export default function OTPVerification() {
     return (
-        <Container>
+        <>
             <Heading
                 title="OTP Verification 📨"
                 description="Enter the OTP sent to your email"
             />
             <OTPVerificationForm />
-        </Container>
+        </>
     );
 }
 

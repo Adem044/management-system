@@ -8,19 +8,18 @@ import { Form } from '@/components/ui/form';
 
 import { InputField, CheckboxField } from '@/components/form-fields';
 
-import Container from '../components/Container';
 import Heading from '../components/Heading';
 import AuthButtons from '../components/AuthButtons';
 
 export default function SignIn() {
     return (
-        <Container>
+        <>
             <Heading
                 title="Welcome To Healthy 24 👌"
                 description="Enter your account to use healthy 24 service"
             />
             <LoginForm />
-        </Container>
+        </>
     );
 }
 

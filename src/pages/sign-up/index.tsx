@@ -5,19 +5,18 @@ import { z } from 'zod';
 import { Form } from '@/components/ui/form';
 import { CheckboxField, InputField } from '@/components/form-fields';
 
-import Container from '../components/Container';
 import Heading from '../components/Heading';
 import AuthButtons from '../components/AuthButtons';
 
 export default function SignUp() {
     return (
-        <Container>
+        <>
             <Heading
                 title="Sign up your account 👋"
                 description="Let's enter your data to continue using healthy 24 services"
             />
             <SignUpForm />
-        </Container>
+        </>
     );
 }
 

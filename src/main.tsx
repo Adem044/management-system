@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
 
-import App from '@/App';
+import { Layout, AuthLayout } from '@/App';
 import SignIn from '@/pages/sign-in';
 import SignUp from '@/pages/sign-up';
 import ForgetPassword from '@/pages/forget-password';
@@ -22,61 +22,70 @@ import Appointments from '@/pages/appointment';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App />,
         children: [
             {
-                path: 'dashboard',
-                element: <Dashboard />,
+                element: <Layout />,
+                children: [
+                    {
+                        path: 'dashboard',
+                        element: <Dashboard />,
+                    },
+                    {
+                        path: 'profile',
+                        element: <Profile />,
+                    },
+                    {
+                        path: 'edit-profile',
+                        element: <EditProfile />,
+                    },
+                    {
+                        path: 'patients',
+                        element: <Patients />,
+                    },
+                    {
+                        path: 'patients/:id',
+                        element: <PatientDetails />,
+                    },
+                    {
+                        path: 'messages',
+                        element: <Messages />,
+                    },
+                    {
+                        path: 'messages/:id',
+                        element: <MessageDetails />,
+                    },
+                    {
+                        path: 'appointment',
+                        element: <Appointments />,
+                    },
+                    {
+                        path: 'medical-history',
+                        element: <MedicalHistory />,
+                    },
+                ],
             },
             {
-                path: 'profile',
-                element: <Profile />,
-            },
-            {
-                path: 'edit-profile',
-                element: <EditProfile />,
-            },
-            {
-                path: 'patients',
-                element: <Patients />,
-            },
-            {
-                path: 'patients/:id',
-                element: <PatientDetails />,
-            },
-            {
-                path: 'messages',
-                element: <Messages />,
-            },
-            {
-                path: 'messages/:id',
-                element: <MessageDetails />,
-            },
-            {
-                path: 'appointment',
-                element: <Appointments />,
-            },
-            {
-                path: 'medical-history',
-                element: <MedicalHistory />,
+                element: <AuthLayout />,
+                children: [
+                    {
+                        path: '/sign-in',
+                        element: <SignIn />,
+                    },
+                    {
+                        path: '/sign-up',
+                        element: <SignUp />,
+                    },
+                    {
+                        path: '/forget-password',
+                        element: <ForgetPassword />,
+                    },
+                    {
+                        path: '/otp-verification',
+                        element: <OTPVerification />,
+                    },
+                ],
             },
         ],
-    },
-    {
-        path: '/sign-in',
-        element: <SignIn />,
-    },
-    {
-        path: '/sign-up',
-        element: <SignUp />,
-    },
-    {
-        path: '/forget-password',
-        element: <ForgetPassword />,
-    },
-    {
-        path: '/otp-verification',
-        element: <OTPVerification />,
     },
 ]);
 
