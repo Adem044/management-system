@@ -1,15 +1,9 @@
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-    AvatarProps,
-} from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarProps } from '@/components/ui/avatar';
 
 export default function UserAvatar(props: AvatarProps) {
     return (
         <Avatar {...props}>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback>AZ</AvatarFallback>
         </Avatar>
     );
 }
