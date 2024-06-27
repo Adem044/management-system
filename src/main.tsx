@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
 
-import { Layout, AuthLayout } from '@/App';
+import Root, { Layout, AuthLayout } from '@/App';
 import SignIn from '@/pages/sign-in';
 import SignUp from '@/pages/sign-up';
 import ForgetPassword from '@/pages/forget-password';
@@ -22,6 +22,7 @@ import Appointments from '@/pages/appointment';
 const router = createBrowserRouter([
     {
         path: '/',
+        element: <Root />,
         children: [
             {
                 element: <Layout />,

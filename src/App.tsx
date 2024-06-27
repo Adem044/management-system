@@ -3,16 +3,21 @@ import { Outlet, useLocation, Navigate } from 'react-router-dom';
 import TopBar from '@/components/layout/TopBar';
 import Sidebar from '@/components/layout/Sidebar';
 
-export function Layout() {
+export default function Root() {
     const { pathname } = useLocation();
+
+    if (pathname === '/') {
+        return <Navigate to="/dashboard" />;
+    }
+
+    return <Outlet />;
+}
+
+export function Layout() {
     const user = localStorage.getItem('user');
 
     if (!user) {
         return <Navigate to="/sign-in" />;
-    }
-
-    if (pathname === '/') {
-        return <Navigate to="/dashboard" />;
     }
 
     return (
