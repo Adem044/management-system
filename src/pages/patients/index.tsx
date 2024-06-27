@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { DownloadIcon, FilterIcon, SearchIcon } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
@@ -14,6 +15,8 @@ import {
 } from '@/components/ui/pagination';
 
 import PageContainer from '../components/PageContainer';
+
+import InfoItem from './components/InfoItem';
 
 export default function Patients() {
     return (
@@ -72,18 +75,11 @@ function PatientCard() {
             <InfoItem label="Weight" value="165lb" />
             <InfoItem label="Blood Pressure" value="120/80mmHg" />
             <InfoItem label="Blood Glucose" value="92mg/dL" />
-            <Button size="lg" className="h-12 w-full text-xs font-normal">
-                View detail patient
-            </Button>
-        </div>
-    );
-}
-
-function InfoItem({ label, value }: { label: string; value: string }) {
-    return (
-        <div className="flex justify-between text-sm sm:text-xs">
-            <span className="text-muted-foreground">{label}</span>
-            <span>{value}</span>
+            <Link to="1">
+                <Button size="lg" className="h-12 w-full text-xs font-normal">
+                    View detail patient
+                </Button>
+            </Link>
         </div>
     );
 }
