@@ -17,6 +17,7 @@ import Patients from '@/pages/patients';
 import PatientDetails from '@/pages/patients/id';
 import Messages from '@/pages/messages';
 import MessageDetails from '@/pages/messages/id';
+import Appointments from '@/pages/appointment';
 
 const router = createBrowserRouter([
     {
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'appointment',
-                element: <div>Appointment</div>,
+                element: <Appointments />,
             },
             {
                 path: 'medical-history',
