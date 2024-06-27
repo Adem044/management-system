@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { DownloadIcon, FilterIcon, SearchIcon } from 'lucide-react';
+import { DownloadIcon, FilterIcon } from 'lucide-react';
 
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -15,6 +14,7 @@ import {
 } from '@/components/ui/pagination';
 
 import PageContainer from '../components/PageContainer';
+import SearchBar from '../components/SearchBar';
 
 import InfoItem from './components/InfoItem';
 
@@ -31,14 +31,7 @@ export default function Patients() {
 function Toolbar() {
     return (
         <div className="flex justify-between gap-4">
-            <div className="relative flex-1 md:grow-0">
-                <SearchIcon className="absolute left-2.5 top-3 size-4 text-muted-foreground" />
-                <Input
-                    type="search"
-                    placeholder="Search for something"
-                    className="h-11 w-full rounded-lg bg-background pl-8 md:w-[250px] lg:w-[336px]"
-                />
-            </div>
+            <SearchBar />
             <div className="flex gap-4">
                 <Button size="lg" variant="secondary" className="gap-2 px-4">
                     <DownloadIcon size={18} />

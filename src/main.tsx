@@ -15,6 +15,7 @@ import EditProfile from '@/pages/edit-profile';
 import MedicalHistory from '@/pages/medical-history';
 import Patients from '@/pages/patients';
 import PatientDetails from '@/pages/patients/id';
+import Messages from '@/pages/messages';
 
 const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'messages',
-                element: <div>Messages</div>,
+                element: <Messages />,
             },
             {
                 path: 'appointment',
