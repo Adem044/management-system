@@ -180,7 +180,7 @@ function AppointmentRow({
                 appointment ? (
                     <AppointmentRowItem key={appointment.id} {...appointment} />
                 ) : (
-                    <div key={index} className="w-64 shrink-0 grow" />
+                    <div key={index * 10} className="w-64 shrink-0 grow" />
                 ),
             )}
         </div>

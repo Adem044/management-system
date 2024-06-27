@@ -49,7 +49,7 @@ const patientsData: TPatient[] = [
     },
     {
         name: 'John Smith',
-        id: '#DOC6353',
+        id: '#DOC6354',
         status: 'pending',
         patient: 'Diabetes Control Appointment',
         date: 'Dec 22, 2023',
@@ -59,7 +59,7 @@ const patientsData: TPatient[] = [
     },
     {
         name: 'Maria Rodriguez',
-        id: '#DOC6353',
+        id: '#DOC6355',
         status: 'canceled',
         patient: 'Root Canal',
         date: 'Dec 22, 2023',
