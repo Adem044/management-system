@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useNavigate } from 'react-router-dom';
 
 import { ButtonLoading } from '@/components/ui/button-loading';
 import { Form } from '@/components/ui/form';
@@ -29,6 +30,7 @@ const formSchema = z.object({
 type TFormSchema = z.infer<typeof formSchema>;
 
 function ForgetPasswordForm() {
+    const navigate = useNavigate();
     const form = useForm<TFormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -38,6 +40,7 @@ function ForgetPasswordForm() {
 
     async function onSubmit(values: TFormSchema) {
         console.log(values);
+        navigate('/otp-verification');
     }
 
     return (
