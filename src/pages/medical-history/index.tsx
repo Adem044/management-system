@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { Button } from '@/components/ui/button';
 import { DataTable } from '@/components/ui/table/data-table';
 
+import PageContainer from '../components/PageContainer';
 import InfoCard from '../components/InfoCard';
 
 import HistoryDetails from './components/HistoryDetails';
@@ -13,15 +14,14 @@ import StatusBadge, { STATUS } from './components/StatusBadge';
 
 export default function MedicalHistory() {
     return (
-        <div className="space-y-4 sm:space-y-6">
-            <h1 className="sm:text-2xl sm:font-semibold">Medical History</h1>
+        <PageContainer title="Medical History">
             <div className="hidden sm:block">
                 <MedicalHistoryTable />
             </div>
             <div className="sm:hidden">
                 <MedicalHistoryList />
             </div>
-        </div>
+        </PageContainer>
     );
 }
 

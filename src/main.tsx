@@ -13,6 +13,7 @@ import Dashboard from '@/pages/dashboard';
 import Profile from '@/pages/profile';
 import EditProfile from '@/pages/edit-profile';
 import MedicalHistory from '@/pages/medical-history';
+import Patients from '@/pages/patients';
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'patients',
-                element: <div>Patients</div>,
+                element: <Patients />,
             },
             {
                 path: 'messages',
