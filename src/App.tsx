@@ -9,7 +9,7 @@ export default function App() {
             <TopBar />
             <div className="flex grow">
                 <Sidebar />
-                <div className="grow overflow-auto px-4 sm:py-10">
+                <div className="grow overflow-auto px-4">
                     <Outlet />
                 </div>
             </div>

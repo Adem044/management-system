@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Profile() {
     return (
-        <div className="space-y-4">
+        <div className="space-y-4 sm:py-10">
             <UserDetails />
             <ProfileDescription />
         </div>
