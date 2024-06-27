@@ -9,7 +9,7 @@ export default function MessageDetails() {
 
 export function ChatDetails() {
     return (
-        <div className="-mx-4 flex h-full grow flex-col">
+        <div className="-mx-4 flex h-full grow flex-col sm:mx-0">
             <div className="flex items-center gap-4 border-b p-4">
                 <div className="size-14 rounded-full bg-secondary" />
                 <div className="flex flex-col">
