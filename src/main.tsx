@@ -12,6 +12,7 @@ import OTPVerification from '@/pages/otp-verification';
 import Dashboard from '@/pages/dashboard';
 import Profile from '@/pages/profile';
 import EditProfile from '@/pages/edit-profile';
+import MedicalHistory from '@/pages/medical-history';
 
 const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'medical-history',
-                element: <div>Medical History</div>,
+                element: <MedicalHistory />,
             },
         ],
     },

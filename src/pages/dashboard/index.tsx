@@ -6,12 +6,9 @@ import { Calendar } from '@/components/ui/calendar';
 
 import UserAvatar from '@/components/UserAvatar';
 
-import {
-    MedicalHistoryList,
-    MedicalHistoryTable,
-} from './components/MedicalHistory';
-import Container from './components/Container';
-import InfoCard from './components/InfoCard';
+import { MedicalHistoryList, MedicalHistoryTable } from '../medical-history';
+
+import InfoCard from '../components/InfoCard';
 
 export default function Dashboard() {
     return (
@@ -35,7 +32,9 @@ function DashboardDesktop() {
                     <UpcomingAppointments />
                 </div>
             </div>
-            <MedicalHistoryTable />
+            <Container title="Medical History">
+                <MedicalHistoryTable />
+            </Container>
         </div>
     );
 }
@@ -49,7 +48,26 @@ function DashboardMobile() {
                 <UpcomingAppointments />
             </div>
             <CurrentMonthVisits />
-            <MedicalHistoryList />
+            <Container title="Medical History">
+                <MedicalHistoryList />
+            </Container>
+        </div>
+    );
+}
+
+function Container({
+    children,
+    title,
+    className,
+}: {
+    children: React.ReactNode;
+    title: string;
+    className?: string;
+}) {
+    return (
+        <div className={cn('space-y-4 rounded-md border p-4', className)}>
+            <span className="font-bold">{title}</span>
+            {children}
         </div>
     );
 }

@@ -5,8 +5,21 @@ import clsx from 'clsx';
 import { Button } from '@/components/ui/button';
 import { DataTable } from '@/components/ui/table/data-table';
 
-import Container from './Container';
-import InfoCard from './InfoCard';
+import InfoCard from '../components/InfoCard';
+
+export default function MedicalHistory() {
+    return (
+        <div className="space-y-4 sm:space-y-6">
+            <h1 className="sm:text-2xl sm:font-semibold">Medical History</h1>
+            <div className="hidden sm:block">
+                <MedicalHistoryTable />
+            </div>
+            <div className="sm:hidden">
+                <MedicalHistoryList />
+            </div>
+        </div>
+    );
+}
 
 const STATUS = {
     success: {
@@ -69,13 +82,11 @@ const patientsData: TPatient[] = [
 
 export function MedicalHistoryList() {
     return (
-        <Container title="Medical History" className="">
-            <div className="-mx-4 space-y-4 divide-y">
-                {patientsData.map((data) => (
-                    <MedicalHistoryItem key={data.id} {...data} />
-                ))}
-            </div>
-        </Container>
+        <div className="-mx-4 space-y-4 divide-y">
+            {patientsData.map((data) => (
+                <MedicalHistoryItem key={data.id} {...data} />
+            ))}
+        </div>
     );
 }
 
@@ -182,9 +193,5 @@ const columns: ColumnDef<TPatient>[] = [
 ];
 
 export function MedicalHistoryTable() {
-    return (
-        <Container title="Medical History">
-            <DataTable columns={columns} data={patientsData} />
-        </Container>
-    );
+    return <DataTable columns={columns} data={patientsData} />;
 }
