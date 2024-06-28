@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -30,6 +31,7 @@ const formSchema = z.object({
 type TFormSchema = z.infer<typeof formSchema>;
 
 function SignUpForm() {
+    const navigate = useNavigate();
     const form = useForm<TFormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -41,7 +43,11 @@ function SignUpForm() {
     });
 
     async function onSubmit(values: TFormSchema) {
-        console.log(values);
+        localStorage.setItem(
+            'user',
+            JSON.stringify({ role: 'user', email: values.email }),
+        );
+        navigate('/dashboard');
     }
 
     return (
