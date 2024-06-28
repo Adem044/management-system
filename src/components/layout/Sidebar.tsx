@@ -7,7 +7,7 @@ import NavLinks from './NavLinks';
 
 export default function Sidebar() {
     return (
-        <aside className="hidden max-w-max border-r sm:block">
+        <aside className="hidden min-w-max border-r sm:block">
             <NavLinks />
             <Logout />
         </aside>
