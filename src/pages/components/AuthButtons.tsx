@@ -1,5 +1,9 @@
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useMutation } from '@tanstack/react-query';
+
 import { ButtonLoading } from '@/components/ui/button-loading';
-import { Link } from 'react-router-dom';
+import { useToast } from '@/components/ui/use-toast';
 
 const CONTENT = {
     'sign-in': {
@@ -24,7 +28,36 @@ const CONTENT = {
     },
 };
 
+async function authenticateWithGoogle() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    const { user } = await signInWithPopup(auth, provider);
+    localStorage.setItem(
+        'user',
+        JSON.stringify({ role: 'user', email: user.email }),
+    );
+}
+
 export default function AuthButtons({ page }: { page: 'sign-in' | 'sign-up' }) {
+    const navigate = useNavigate();
+    const { toast } = useToast();
+    const mutation = useMutation({
+        mutationFn: authenticateWithGoogle,
+        onSuccess: () => {
+            navigate('/dashboard');
+        },
+        onError: (error) => {
+            toast({
+                title: error.message,
+                variant: 'destructive',
+            });
+        },
+    });
+
+    function authenticateWithGoogleHandler() {
+        mutation.mutate();
+    }
+
     const {
         submitButton,
         googleButton,
@@ -32,6 +65,7 @@ export default function AuthButtons({ page }: { page: 'sign-in' | 'sign-up' }) {
         extraMessage,
         externalLink,
     } = CONTENT[page];
+
     return (
         <div className="flex flex-col gap-y-4 sm:gap-y-6">
             <ButtonLoading type="submit" inProgress={false}>
@@ -39,7 +73,11 @@ export default function AuthButtons({ page }: { page: 'sign-in' | 'sign-up' }) {
             </ButtonLoading>
             <span className="text-center text-sm font-semibold">Or</span>
             <div className="flex flex-col space-y-3">
-                <ButtonLoading inProgress={false} variant="outline">
+                <ButtonLoading
+                    inProgress={false}
+                    variant="outline"
+                    onClick={authenticateWithGoogleHandler}
+                >
                     {googleButton}
                 </ButtonLoading>
                 <ButtonLoading inProgress={false} variant="outline">
