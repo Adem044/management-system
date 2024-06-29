@@ -20,6 +20,8 @@ import Messages from '@/pages/messages';
 import MessageDetails from '@/pages/messages/id';
 import Appointments from '@/pages/appointment';
 
+import { Toaster } from '@/components/ui/toaster';
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -97,6 +99,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router} />
+            <Toaster />
         </QueryClientProvider>
     </React.StrictMode>,
 );
