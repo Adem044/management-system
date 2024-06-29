@@ -127,7 +127,6 @@ function PastAppointment() {
                     <div className="grid grid-cols-3 pt-4">
                         <AppointmentDetail label="Treatment" value="Check-up" />
                         <AppointmentDetail label="Duration" value="3 months" />
-                        {/* TODO */}
                         <AppointmentDetail
                             label="Document"
                             value="Check-up-result.pdf"

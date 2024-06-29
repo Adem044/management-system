@@ -30,7 +30,6 @@ export function ChatDetails() {
             <div className="grow space-y-8 overflow-auto border-b p-4">
                 <span className="flex justify-center">Jan 23</span>
                 <div className="space-y-6 ">
-                    {/* TODO */}
                     <LeftChatMessage />
                     <RightChatMessage />
                     <LeftChatMessage hasDate={false} hasLoadingIndicator />

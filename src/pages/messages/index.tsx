@@ -13,7 +13,6 @@ export default function Messages() {
                     <Title>Message</Title>
                     <SearchBar />
                     <div className="-mx-4 flex grow flex-col gap-4 overflow-auto px-4">
-                        {/* TODO */}
                         <Message />
                         <Message />
                         <Message numOfUnreadMessages={2} isActive />
