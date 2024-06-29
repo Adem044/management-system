@@ -26,6 +26,9 @@ dependencies:
     '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+    '@tanstack/react-query':
+        specifier: ^5.49.0
+        version: 5.49.0(react@18.3.1)
     '@tanstack/react-table':
         specifier: ^8.17.3
         version: 8.17.3(react-dom@18.3.1)(react@18.3.1)
@@ -1756,6 +1759,25 @@ packages:
         requiresBuild: true
         dev: true
         optional: true
+
+    /@tanstack/query-core@5.49.0:
+        resolution:
+            {
+                integrity: sha512-xUTjCPHC8G+ZvIUzjoMOLnMpNXYPQI4HjhlizTVVBwtSp24iWo4/kaBzHAzsrCVyfbiaPIFFkUvicsY4r8kF8A==,
+            }
+        dev: false
+
+    /@tanstack/react-query@5.49.0(react@18.3.1):
+        resolution:
+            {
+                integrity: sha512-3A0BDwGVk6UzWFdz+WTC9HHts9kI42XYLK78/DGmoj9fd6W/NsjEjI5S4lPPebgq9cWWPo9QNciaSWfH71RgNg==,
+            }
+        peerDependencies:
+            react: ^18.0.0
+        dependencies:
+            '@tanstack/query-core': 5.49.0
+            react: 18.3.1
+        dev: false
 
     /@tanstack/react-table@8.17.3(react-dom@18.3.1)(react@18.3.1):
         resolution:
