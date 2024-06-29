@@ -44,10 +44,10 @@ export default function PatientDetails() {
     );
 }
 
-function PatientProfile({ name, id, street, city, country }: TPatient) {
+function PatientProfile({ name, id, avatar, street, city, country }: TPatient) {
     return (
         <div className="flex flex-col items-center gap-4 rounded-md border p-4">
-            <div className="size-14 rounded-full bg-secondary"></div>
+            <img src={avatar} alt={name} className="size-14 rounded-full" />
             <span className="font-medium sm:text-sm">{name}</span>
             <div className="flex gap-4 text-sm sm:text-xs">
                 <span className="text-muted-foreground">Patient ID</span>

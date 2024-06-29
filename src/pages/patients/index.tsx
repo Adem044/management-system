@@ -94,6 +94,7 @@ function PatientsList() {
 function PatientCard({
     id,
     name,
+    avatar,
     street,
     city,
     country,
@@ -103,7 +104,7 @@ function PatientCard({
 }: TPatient) {
     return (
         <div className="flex flex-col gap-4 rounded-md border p-4">
-            <div className="size-12 rounded-full bg-secondary"></div>
+            <img src={avatar} alt={name} className="size-12 rounded-full" />
             <span className="font-medium sm:text-sm">{name}</span>
             <span className="text-sm text-muted-foreground sm:text-xs">
                 {street}, {city}, {country}
