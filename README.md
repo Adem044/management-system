@@ -15,6 +15,8 @@ Welcome to the Doctor's Office Management System! This web application allows do
 - **TypeScript (TS)**: Provides static typing for enhanced code quality and maintainability.
 - **React**: A JavaScript library for building user interfaces.
 - **Shadcn/ui**: A component library for building responsive and modern user interfaces.
+- **react-query**: For data fetching and state management.
+- **firebase**: Backend services for authentication and database.
 - **react-router-dom**: A routing library for React applications.
 - **react-hook-form**: A library for handling form state and validation.
 - **zod**: A TypeScript-first schema declaration and validation library.
