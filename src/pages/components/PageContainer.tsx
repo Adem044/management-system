@@ -44,7 +44,7 @@ export function Container({
     return (
         <div
             className={cn(
-                'flex min-h-full flex-col gap-4 sm:gap-6 sm:py-10',
+                'flex flex-col grow gap-4 sm:gap-6 pb-10 pt-20 sm:py-10 px-4 overflow-auto',
                 className,
             )}
         >

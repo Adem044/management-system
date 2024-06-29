@@ -37,7 +37,7 @@ export default function EditProfile() {
     }
 
     return (
-        <div className="sm:py-10">
+        <div className="grow overflow-auto sm:py-10">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}

@@ -7,12 +7,12 @@ import { ChatDetails } from './id';
 
 export default function Messages() {
     return (
-        <Container className="sm:py-0">
-            <div className="flex grow flex-col sm:flex-row">
-                <div className="space-y-6 sm:border-r sm:pr-4 sm:pt-10">
+        <Container className="sm:p-0">
+            <div className="flex grow flex-col overflow-auto sm:flex-row">
+                <div className="flex flex-col gap-6 sm:border-r sm:px-4 sm:pt-10">
                     <Title>Message</Title>
                     <SearchBar />
-                    <div className="flex flex-col gap-4">
+                    <div className="-mx-4 flex grow flex-col gap-4 overflow-auto px-4">
                         {/* TODO */}
                         <Message />
                         <Message />

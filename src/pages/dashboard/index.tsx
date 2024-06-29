@@ -21,7 +21,7 @@ export default function Dashboard() {
 
 function DashboardDesktop() {
     return (
-        <div className="hidden space-y-4 sm:block sm:py-10">
+        <div className="hidden space-y-4 sm:block sm:px-4 sm:py-10">
             <div className="flex gap-4">
                 <div className="flex grow flex-col justify-between">
                     <Heading />
@@ -41,7 +41,7 @@ function DashboardDesktop() {
 
 function DashboardMobile() {
     return (
-        <div className="space-y-4 sm:hidden">
+        <div className="grow space-y-4 px-4 sm:hidden">
             <Heading />
             <div className="rounded-md border">
                 <Calendar />

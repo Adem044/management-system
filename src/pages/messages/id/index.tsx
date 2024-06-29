@@ -27,7 +27,7 @@ export function ChatDetails() {
                     </Button>
                 </div>
             </div>
-            <div className="grow space-y-8 border-b p-4">
+            <div className="grow space-y-8 overflow-auto border-b p-4">
                 <span className="flex justify-center">Jan 23</span>
                 <div className="space-y-6 ">
                     {/* TODO */}

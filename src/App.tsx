@@ -21,11 +21,11 @@ export function Layout() {
     }
 
     return (
-        <div className="flex min-h-screen flex-col pb-10 pt-20 sm:p-0">
+        <div className="flex h-screen max-h-screen flex-col">
             <TopBar />
-            <div className="flex grow">
+            <div className="flex grow overflow-auto">
                 <Sidebar />
-                <div className="grow overflow-auto px-4">
+                <div className="flex grow overflow-auto">
                     <Outlet />
                 </div>
             </div>
