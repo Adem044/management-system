@@ -2,9 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { useMutation } from '@tanstack/react-query';
 
 import { Form } from '@/components/ui/form';
 import { CheckboxField, InputField } from '@/components/form-fields';
+import { useToast } from '@/components/ui/use-toast';
 
 import Heading from '../components/Heading';
 import AuthButtons from '../components/AuthButtons';
@@ -25,13 +28,37 @@ const formSchema = z.object({
     name: z.string().min(3).max(255),
     email: z.string().email(),
     password: z.string().min(8),
-    terms: z.boolean(),
+    terms: z.boolean().refine((value) => value === true, {
+        message: 'You must accept the terms and conditions',
+    }),
 });
 
 type TFormSchema = z.infer<typeof formSchema>;
 
+async function signUpUser(values: TFormSchema) {
+    const auth = getAuth();
+    await createUserWithEmailAndPassword(auth, values.email, values.password);
+    localStorage.setItem(
+        'user',
+        JSON.stringify({ role: 'user', email: values.email }),
+    );
+}
+
 function SignUpForm() {
     const navigate = useNavigate();
+    const { toast } = useToast();
+    const mutation = useMutation({
+        mutationFn: signUpUser,
+        onSuccess: () => {
+            navigate('/dashboard');
+        },
+        onError: (error) => {
+            toast({
+                title: error.message,
+                variant: 'destructive',
+            });
+        },
+    });
     const form = useForm<TFormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -43,11 +70,7 @@ function SignUpForm() {
     });
 
     async function onSubmit(values: TFormSchema) {
-        localStorage.setItem(
-            'user',
-            JSON.stringify({ role: 'user', email: values.email }),
-        );
-        navigate('/dashboard');
+        mutation.mutate(values);
     }
 
     return (
