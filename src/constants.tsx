@@ -6,6 +6,8 @@ import {
     UsersIcon,
 } from 'lucide-react';
 
+export const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
+
 export const NAV_LINKS = [
     {
         label: 'Dashboard',
