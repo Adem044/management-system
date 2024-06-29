@@ -1,16 +1,42 @@
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+
 import { Button } from '@/components/ui/button';
+import Loader from '@/components/Loader';
+import NoResultFound from '@/components/NoResultFound';
+
+import { BASE_API_URL } from '@/constants';
 
 import PageContainer from '../../components/PageContainer';
 
 import InfoItem from '../components/InfoItem';
 
+import { TPatient } from '..';
+
+async function getPatient(id: string): Promise<TPatient> {
+    return fetch(`${BASE_API_URL}patients/${id}`).then((res) => res.json());
+}
+
 export default function PatientDetails() {
+    const { id } = useParams<{ id: string }>();
+    const { data: patient, isFetching } = useQuery({
+        queryKey: ['patient', id],
+        queryFn: () => getPatient(id!),
+    });
+
+    if (isFetching) {
+        return <Loader />;
+    }
+
+    if (!patient) {
+        return <NoResultFound>Patient not found</NoResultFound>;
+    }
     return (
         <PageContainer title="Patient Details">
             <div className="flex flex-col gap-4 sm:flex-row">
                 <div className="min-w-72 space-y-4">
-                    <PatientProfile />
-                    <PatientInformation />
+                    <PatientProfile {...patient} />
+                    <PatientInformation {...patient} />
                 </div>
                 <PastAppointments />
             </div>
@@ -18,17 +44,17 @@ export default function PatientDetails() {
     );
 }
 
-function PatientProfile() {
+function PatientProfile({ name, id, street, city, country }: TPatient) {
     return (
         <div className="flex flex-col items-center gap-4 rounded-md border p-4">
             <div className="size-14 rounded-full bg-secondary"></div>
-            <span className="font-medium sm:text-sm">John Smith</span>
+            <span className="font-medium sm:text-sm">{name}</span>
             <div className="flex gap-4 text-sm sm:text-xs">
                 <span className="text-muted-foreground">Patient ID</span>
-                <span className="font-medium">#DOC6353</span>
+                <span className="font-medium">#{id}</span>
             </div>
             <span className="text-sm text-muted-foreground sm:text-xs">
-                123 Main St, Anytown, USA
+                {street}, {city}, {country}
             </span>
             <div className="flex w-full justify-evenly">
                 <AppointmentStats label="Appointment" value="15" />
@@ -50,15 +76,15 @@ function AppointmentStats({ label, value }: { label: string; value: string }) {
     );
 }
 
-function PatientInformation() {
+function PatientInformation({ weight, bloodGlucose, bloodPressure }: TPatient) {
     return (
         <div className="space-y-4 rounded-md border p-4">
             <h6 className="text-lg font-semibold">Patient information</h6>
-            <InfoItem label="Weight" value="160lb" />
+            <InfoItem label="Weight" value={`${weight}lb`} />
             <InfoItem label="Height" value="1,80 m" />
             <InfoItem label="Blood Type" value="O- (Negative)" />
-            <InfoItem label="Blood Glucose" value="92mg/dL" />
-            <InfoItem label="Blood Pressure" value="120/80mmHg" />
+            <InfoItem label="Blood Glucose" value={bloodGlucose} />
+            <InfoItem label="Blood Pressure" value={bloodPressure} />
             <InfoItem label="Disease" value="Diabetes" />
             <InfoItem label="Allergies" value="Peanut" />
         </div>
