@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useMutation } from '@tanstack/react-query';
 
 import { Form } from '@/components/ui/form';
+import { useToast } from '@/components/ui/use-toast';
 
 import { InputField, CheckboxField } from '@/components/form-fields';
 
@@ -31,8 +34,30 @@ const formSchema = z.object({
 
 type TFormSchema = z.infer<typeof formSchema>;
 
+async function signInUser(values: TFormSchema) {
+    const auth = getAuth();
+    await signInWithEmailAndPassword(auth, values.email, values.password);
+    localStorage.setItem(
+        'user',
+        JSON.stringify({ role: 'user', email: values.email }),
+    );
+}
+
 function LoginForm() {
     const navigate = useNavigate();
+    const { toast } = useToast();
+    const mutation = useMutation({
+        mutationFn: signInUser,
+        onSuccess: () => {
+            navigate('/dashboard');
+        },
+        onError: (error) => {
+            toast({
+                title: error.message,
+                variant: 'destructive',
+            });
+        },
+    });
     const form = useForm<TFormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -43,11 +68,7 @@ function LoginForm() {
     });
 
     async function onSubmit(values: TFormSchema) {
-        localStorage.setItem(
-            'user',
-            JSON.stringify({ role: 'user', email: values.email }),
-        );
-        navigate('/dashboard');
+        mutation.mutate(values);
     }
     return (
         <Form {...form}>
