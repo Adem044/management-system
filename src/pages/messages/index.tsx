@@ -20,7 +20,7 @@ export default function Messages() {
                         <Message />
                     </div>
                 </div>
-                <div className="hidden sm:flex">
+                <div className="hidden grow sm:flex">
                     <ChatDetails />
                 </div>
             </div>

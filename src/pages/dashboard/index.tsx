@@ -21,7 +21,7 @@ export default function Dashboard() {
 
 function DashboardDesktop() {
     return (
-        <div className="hidden space-y-4 sm:block sm:px-4 sm:py-10">
+        <div className="hidden grow space-y-4 sm:block sm:px-4 sm:py-10">
             <div className="flex gap-4">
                 <div className="flex grow flex-col justify-between">
                     <Heading />
