@@ -159,38 +159,44 @@ const columns: ColumnDef<TPatient>[] = [
     },
     {
         header: 'Action',
-        cell: () => (
+        cell: ({ row }) => <ActionButtons data={row.original} />,
+    },
+];
+
+function ActionButtons({ data }: { data: TPatient }) {
+    const [selectedPatient, setSelectedPatient] =
+        React.useState<TPatient | null>(null);
+    return (
+        <>
             <div className="flex text-muted-foreground">
-                <Button size="icon" variant="ghost">
+                <Button
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => {
+                        setSelectedPatient(data);
+                    }}
+                >
                     <EyeOffIcon size={18} />
                 </Button>
                 <Button size="icon" variant="ghost">
                     <TrashIcon size={18} />
                 </Button>
             </div>
-        ),
-    },
-];
+            {selectedPatient && (
+                <HistoryDetails
+                    open
+                    setOpen={() => setSelectedPatient(null)}
+                    selectedPatient={selectedPatient}
+                />
+            )}
+        </>
+    );
+}
 
 export function MedicalHistoryTable() {
-    const [open, setOpen] = React.useState(false);
-    const [selectedPatient, setSelectedPatient] =
-        React.useState<TPatient | null>(null);
     return (
         <>
-            <DataTable
-                columns={columns}
-                data={patientsData}
-                onRowClick={(data) => {
-                    setOpen(true);
-                    setSelectedPatient(data);
-                }}
-            />
-            <HistoryDetails
-                open={open}
-                setOpen={setOpen}
-                selectedPatient={selectedPatient}
-            />
+            <DataTable columns={columns} data={patientsData} />
         </>
     );
 }
